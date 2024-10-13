@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 import { routes } from "../../../constants/routes"
 
 function SignIn() {
-	const { user } = useUser()
+	const { user, setUser } = useUser()
 	const navigate = useNavigate()
 	const schema = z.object({
 		email: z
@@ -28,10 +28,17 @@ function SignIn() {
 		values: FormikValues,
 		setErrors: (field: string, message: string | undefined) => void
 	) => {
-		// const { email, password } = values
+		const { email, password } = values
+
+		const isMatched = user?.password === password && user?.email === email
 		if (!user) {
-            setErrors("email", "User not found")
-		} 
+			return setErrors("email", "User not found")
+		}
+		if (!isMatched) {
+			return setErrors("email", "Invalid email or password")
+		}
+		setUser({ ...user, isSignUp: true })
+		navigate(routes.home.index)
 	}
 	return (
 		<>
@@ -94,7 +101,6 @@ function SignIn() {
 										/>
 									</Box>
 									<ActionButton
-										loading={false}
 										disabled={!isValid || isSubmitting || !dirty}
 										label="Login"
 										sx={{

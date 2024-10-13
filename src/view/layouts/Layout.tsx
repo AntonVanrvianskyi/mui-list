@@ -9,6 +9,12 @@ import { routes } from "../../constants/routes"
 
 function Layout() {
 	const { user, setUser } = useUser()
+	
+	const onLogout = () => {
+		if(user){
+			setUser({...user, isSignUp: false})
+		}
+	}
 	return (
 		<>
 			<header
@@ -38,7 +44,10 @@ function Layout() {
 					}}
 				>
 					<Avatar>{user?.email[0].toUpperCase()}</Avatar>
-					<SecondaryButton onClick={() => setUser(null)} label="Logout" />
+					<SecondaryButton
+						onClick={onLogout}
+						label="Logout"
+					/>
 				</Box>
 			</header>
 			<Container

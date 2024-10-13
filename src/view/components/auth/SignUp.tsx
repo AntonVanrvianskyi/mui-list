@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 import { routes } from "../../../constants/routes"
 
 function SignUp() {
-	const { setUser } = useUser()
+	const { user, setUser } = useUser()
 	const navigate = useNavigate()
 	const schema = z.object({
 		email: z
@@ -24,10 +24,17 @@ function SignUp() {
 			.min(8, { message: "Password is short" }),
 	})
 
-	const onSubmit = (values: FormikValues) => {
+	const onSubmit = (
+		values: FormikValues,
+		setErrors: (field: string, message: string | undefined) => void
+	) => {
 		const { email, password } = values
-		setUser({ email, password })
-		navigate(routes.home.index)
+		if (user?.email === email) {
+			setErrors("email", "User alredy exists")
+		} else {
+			setUser({ email, password, isSignUp: true })
+			navigate(routes.home.index)
+		}
 	}
 	return (
 		<>
@@ -46,7 +53,7 @@ function SignUp() {
 						validateOnBlur={false}
 						validationSchema={toFormikValidationSchema(schema)}
 						onSubmit={(values, actions) => {
-							onSubmit(values)
+							onSubmit(values, actions.setFieldError)
 							actions.setSubmitting(false)
 						}}
 					>
@@ -90,7 +97,6 @@ function SignUp() {
 										/>
 									</Box>
 									<ActionButton
-										loading={false}
 										disabled={!isValid || isSubmitting || !dirty}
 										label="Register"
 										sx={{

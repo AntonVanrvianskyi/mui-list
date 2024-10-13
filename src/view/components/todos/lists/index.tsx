@@ -34,7 +34,7 @@ function ListTodos() {
 						key={todo.id}
 						todo={todo}
 						onUpdate={() => onUpdate(todo)}
-                        onDelete={() => deleteTodo(todo.id)}
+						onDelete={() => deleteTodo(todo.id)}
 					/>
 				))}
 			</Box>

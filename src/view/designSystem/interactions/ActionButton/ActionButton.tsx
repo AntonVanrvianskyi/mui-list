@@ -1,6 +1,5 @@
 import { SxProps } from "@mui/system"
 import type { LoadingButtonProps } from "@mui/lab/LoadingButton"
-import CircularProgress from "@mui/material/CircularProgress"
 import { useTheme } from "@mui/material/styles"
 import LoadingButton from "@mui/lab/LoadingButton"
 import { movingGradient, sheen } from "../../frames"
@@ -25,12 +24,6 @@ function ActionButton({ label, sx, onClick, ...props }: Props) {
 				disableTouchRipple
 				disableElevation
 				onClick={onClick}
-				loadingIndicator={
-					<CircularProgress
-						size={14}
-						sx={{ color: theme.palette.white.main }}
-					/>
-				}
 				sx={{
 					...sx,
 					maxHeight: 64,

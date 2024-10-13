@@ -136,13 +136,12 @@ function UpdateModal({ open, updateTodo, onClose }: Props) {
 								/>
 							</Box>
 							<ActionButton
-								loading={false}
 								disabled={!isValid || isSubmitting || !dirty}
 								label="Update"
 								sx={{
 									"&.MuiButtonBase-root": {
 										height: 48,
-										mt: 4,
+										mt: 3,
 									},
 								}}
 							/>

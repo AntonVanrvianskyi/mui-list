@@ -16,7 +16,6 @@ function CreateTodo() {
 	const onSubmit = (values: FormikValues) => {
 		const { title, description } = values
 		setTodo({ id: new Date().getTime(), title, description })
-		console.log(title, description)
 	}
 	return (
 		<>
@@ -78,7 +77,6 @@ function CreateTodo() {
 									/>
 								</Box>
 								<ActionButton
-									loading={false}
 									disabled={!isValid || !dirty}
 									label="Create"
 									sx={{

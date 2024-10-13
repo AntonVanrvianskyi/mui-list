@@ -16,11 +16,11 @@ function AuthAssistance() {
 	const isSignIn = search.get("type") === "signIn"
 	useEffect(() => {
 		setSearchParams({ type: "signIn" })
-		// if (user) {
-		// 	navigate(routes.home)
-		// }
+		if (user?.isSignUp) {
+			navigate(routes.home.index)
+		}
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+	}, [user, navigate])
 
 	const onChangeAuthSide = () => {
 		if (isSignIn) {
@@ -44,7 +44,10 @@ function AuthAssistance() {
 				transform: "translate(-50%, -50%)",
 				boxSizing: "border-box",
 				p: 2,
-				"@media screen and (max-width: 480px)": {},
+				"@media screen and (max-width: 480px)": {
+					width: "100%",
+					border: "none"
+				},
 			}}
 		>
 			<ToggleButton

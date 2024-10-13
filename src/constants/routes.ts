@@ -2,8 +2,6 @@ export const routes = {
 	index: "/",
 	auth: {
         index: "/auth",
-		// signIn: "/signIn",
-		// signUp: "/signUp",
 	},
 	home: {
 		index: "/home",
