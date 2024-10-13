@@ -43,8 +43,7 @@ function Layout() {
 			</header>
 			<Container
 				sx={{
-					border: "1px solid red",
-					mt: 1
+					mt: 1,
 				}}
 			>
 				<Outlet />

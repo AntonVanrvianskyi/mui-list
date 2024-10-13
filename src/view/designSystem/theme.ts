@@ -16,6 +16,7 @@ const theme = createTheme({
     bgColor: {
       extraLight: "rgba(129, 106, 166, 0.08)",
       light: "#322A49",
+      lightGray: "rgba(129, 106, 166, 0.50)",
       medium: "#1B152A",
       dark: "#120E1F",
     },

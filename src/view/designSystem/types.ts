@@ -31,6 +31,7 @@ declare module "@mui/material/styles/createPalette" {
 			medium: string
 			dark: string
 			extraLight: string
+      lightGray: string
 		}
 		textColor: { faded: string }
 	}
@@ -43,6 +44,7 @@ declare module "@mui/material/styles/createPalette" {
 		orange64: { main: string }
 		bgColor: {
 			light: string
+      lightGray: string
 			medium: string
 			dark: string
 			extraLight: string
